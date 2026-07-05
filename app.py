@@ -1,6 +1,15 @@
 import streamlit as st
 import sys
 import os
+from loguru import logger
+
+# Loguru Logger 설정 (Streamlit app.py)
+logger.remove()
+logger.add(
+    sys.stdout,
+    format="<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>",
+    level="INFO"
+)
 
 # ---------------------------------------------------------------------------
 # Add submodules to Python path
@@ -44,11 +53,13 @@ with tab2:
     st.header("가공성 평가 (Level 1~5)")
     st.markdown("SG_proj_011 모듈을 구동하여 3D 토포그래피 응력-변형 수준을 판별합니다.")
     if st.button("가공성 등급 판별 실행", type="primary"):
+        logger.info(f"UI Event: Triggered processability evaluation (SFE={sfe}, Ra={ra}, K={curvature})")
         st.success("Level 4 (심한 굴곡 및 모서리 응력 집중) 등급으로 판별되었습니다. 고유지력이 요구됩니다.")
 
 with tab3:
     st.header("최적 제품 추천 및 대체재 매칭")
     st.markdown("SG_proj_004 DB를 기반으로 SG_proj_012(TOPSIS) 매칭을 수행합니다.")
     if st.button("추천 알고리즘 구동 (AHP/TOPSIS)", type="primary"):
+        logger.info(f"UI Event: Triggered product recommendation recommendation (SFE={sfe}, Ra={ra}, K={curvature})")
         st.warning("조건에 부합하는 기존 DB 내 제품이 없습니다. 대체재 매칭(010) 결과와 함께 역설계(Step 3) 게이트웨이로의 진입을 권장합니다.")
         st.info("대체 피착재 매칭 결과: 75BFJ (유사도 92%)")
