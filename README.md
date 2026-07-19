@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Framework](https://img.shields.io/badge/Framework-Streamlit_Pandas-orange)
-![Hardware](https://img.shields.io/badge/Hardware-Standard-lightgrey)
+![Hardware](https://img.shields.io/badge/Hardware-Mac_M2_Pro_%7C_Win_RTX5080-lightgrey)
 
 ## 1. 개요
 Step 1에서 계측된 데이터(표면 에너지, 조도, 광택도, 곡률 등)를 기반으로 가공 난이도를 평가하고, 사내 DB를 쿼리하여 최적의 자사 제품을 추천하는 의사결정 플랫폼입니다. 
@@ -38,3 +38,6 @@ graph TD
 git submodule update --init --recursive
 streamlit run app.py
 ```
+
+---
+*Last Updated: 2026-07-19 (Hybrid Environment & MSA Integration)*
